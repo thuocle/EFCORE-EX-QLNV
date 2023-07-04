@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QLNV.Entities;
 
@@ -10,9 +11,11 @@ using QLNV.Entities;
 namespace QLNV.Migrations
 {
     [DbContext(typeof(AppDbConText))]
-    partial class AppDbConTextModelSnapshot : ModelSnapshot
+    [Migration("20230704164555_update_v.1")]
+    partial class update_v1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,11 +1,6 @@
 ﻿using QLNV.Entities;
 using QLNV.Helper;
 using QLNV.IServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QLNV.Services
 {
@@ -17,13 +12,13 @@ namespace QLNV.Services
         {
             this.dbContext = new AppDbConText();
         }
-        public  NhanVien CheckNhanVien(int nhanvienID)
+        public NhanVien CheckNhanVien(int nhanvienID)
         {
             return dbContext.NhanVien.FirstOrDefault(x => x.NhanVienID == nhanvienID);
         }
         public void ThemNhanVien(NhanVien n)
         {
-            using(var trans = dbContext.Database.BeginTransaction())
+            using (var trans = dbContext.Database.BeginTransaction())
             {
                 try
                 {
@@ -58,7 +53,7 @@ namespace QLNV.Services
 
         public void XoaNhanVien(int nhanvienID)
         {
-           using (var trans = dbContext.Database.BeginTransaction())
+            using (var trans = dbContext.Database.BeginTransaction())
             {
                 try
                 {
