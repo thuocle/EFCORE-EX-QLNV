@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace QLNV.Helper
 {
-    public enum inputType {
+    public enum inputType
+    {
         Them
     }
 
@@ -112,7 +113,7 @@ namespace QLNV.Helper
         #region KiemTraKhiCRUD
         public static bool CheckNhanVienRule(NhanVien nv)
         {
-           return nv.HoTen.Length <= 20 && nv.HoTen.Split(' ').Length > 2 && nv.NgaySinh.Year >= 1970 && nv.NgaySinh.Year <= 2000;
+            return nv.HoTen.Length <= 20 && nv.HoTen.Split(' ').Length > 2 && nv.NgaySinh.Year >= 1970 && nv.NgaySinh.Year <= 2000;
         }
         public static bool CheckPhanCongRule(PhanCong p)
         {
