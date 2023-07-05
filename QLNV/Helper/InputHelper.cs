@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace QLNV.Helper
 {
+    public enum inputType {
+        Them
+    }
+
     public class InputHelper
     {
         #region KiemTraKhiNhap
@@ -37,14 +41,16 @@ namespace QLNV.Helper
             } while (!check);
             return ret;
         }
-        public static bool IsPhoneNumber(string number)
+        #region Private method
+        private static bool IsPhoneNumber(string number)
         {
-            return Regex.Match(number, @"^([0-9]{9})$").Success;
+            return Regex.Match(number, @"^([0-9]{10})$").Success;
         }
-        public static bool IsEmail(string email)
+        private static bool IsEmail(string email)
         {
             return Regex.Match(email, @"^[^\s@]+@[^\s@]+\.[^\s@]+$").Success;
         }
+        #endregion
         public static bool IsMoreTwoWord(string str)
         {
             return str.Split(' ').Length > 2;
@@ -88,6 +94,7 @@ namespace QLNV.Helper
             } while (!check);
             return ret;
         }
+
         public static DateTime InputDT(string msg, string err, DateTime min, DateTime max)
         {
             bool check;

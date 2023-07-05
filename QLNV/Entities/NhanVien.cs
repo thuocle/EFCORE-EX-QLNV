@@ -23,14 +23,21 @@ namespace QLNV.Entities
         public string Email { get; set; }
         public int HeSoLuong { get; set; }
         public IEnumerable<PhanCong> PhanCong { get; set; }
+        public NhanVien(inputType it)
+        {
+            if(it== inputType.Them)
+            {
+                HoTen = InputHelper.InputName(Res.inHoten, Res.Err, 0, 20);
+                NgaySinh = InputHelper.InputDT(Res.inNgaySinh, Res.Err, new DateTime(1970, 1, 1), new DateTime(2000, 12, 31));
+                SDT = InputHelper.PhoneNumBer(Res.inSDT, Res.Err);
+                DiaChi = InputHelper.InputSTR(Res.inDiaChi, Res.Err, 0, 50);
+                Email = InputHelper.Email(Res.inEmail, Res.Err);
+                HeSoLuong = InputHelper.InputINT(Res.inHSLuong, Res.Err);
+            }
+        }
         public NhanVien()
         {
-            HoTen = InputHelper.InputName(Res.inHoten, Res.Err, 0, 20);
-            NgaySinh = InputHelper.InputDT(Res.inNgaySinh, Res.Err, new DateTime(1970, 1,1), new DateTime(2000, 12, 31));
-            SDT = InputHelper.PhoneNumBer(Res.inSDT, Res.Err);
-            DiaChi = InputHelper.InputSTR(Res.inDiaChi, Res.Err, 0, 50);
-            Email = InputHelper.Email(Res.inEmail, Res.Err);
-            HeSoLuong = InputHelper.InputINT(Res.inHSLuong, Res.Err);
+            
         }
     }
 }

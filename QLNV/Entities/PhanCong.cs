@@ -15,11 +15,18 @@ namespace QLNV.Entities
         public int DuAnID { get; set; }
         public DuAn DuAn { get; set; }
         public int SoGioLam { get; set; }
+        public PhanCong(inputType it)
+        {
+            if(it == inputType.Them)
+            {
+                NhanVienID = InputHelper.InputINT(Res.inNhanVienID, Res.Err);
+                DuAnID = InputHelper.InputINT(Res.inDuAnID, Res.Err);
+                SoGioLam = InputHelper.InputINT(Res.inSoGioLam, Res.Err);
+            }
+        }
         public PhanCong()
         {
-            NhanVienID = InputHelper.InputINT(Res.inNhanVienID, Res.Err);
-            DuAnID = InputHelper.InputINT(Res.inDuAnID, Res.Err);
-            SoGioLam = InputHelper.InputINT(Res.inSoGioLam, Res.Err);
+            
         }
     }
 }

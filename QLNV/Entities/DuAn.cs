@@ -16,11 +16,18 @@ namespace QLNV.Entities
         public string MoTa { get; set; }
         public string GhiChu { get; set; }
         public IEnumerable<PhanCong> PhanCong { get; set; }
+        public DuAn(inputType it)
+        {
+            if (it == inputType.Them)
+            {
+                TenDuAn = InputHelper.InputSTR(Res.inTenDuAn, Res.Err, 0, 10);
+                MoTa = InputHelper.InputSTR(Res.inMota, Res.Err, 0, 20);
+                GhiChu = InputHelper.InputSTR(Res.inGhiChu, Res.Err, 0, 20);
+            }
+        }
         public DuAn()
         {
-            TenDuAn = InputHelper.InputSTR(Res.inTenDuAn, Res.Err, 0, 10);
-            MoTa = InputHelper.InputSTR(Res.inMota, Res.Err, 0, 20);
-            GhiChu = InputHelper.InputSTR(Res.inGhiChu, Res.Err, 0, 20);
+            
         }
         public void CapNhatDuAn()
         {

@@ -35,6 +35,7 @@ namespace QLNV.Services
                     {
                         dbContext.Add(n);
                         dbContext.SaveChanges();
+                        Console.WriteLine(Res.ThanhCong);
                     }
                     trans.Commit();
                 }
@@ -48,7 +49,26 @@ namespace QLNV.Services
 
         public void TinhLuongNhanVien()
         {
-            throw new NotImplementedException();
+            var query = from nv in dbContext.NhanVien
+                        join pc in dbContext.PhanCong
+                            on nv.NhanVienID equals pc.NhanVienID
+                        join da in dbContext.DuAn
+                            on pc.DuAnID equals da.DuAnID
+                        group new { nv, pc, da }
+                            by new { nv.NhanVienID, nv.HoTen, nv.HeSoLuong }
+                               into gLuong
+                        select new
+                        {
+                            Ten = gLuong.Key.HoTen,
+                            HSL = gLuong.Key.HeSoLuong,
+                            TongGio = gLuong.Sum(x => x.pc != null ? x.pc.SoGioLam : 0)
+                        };
+            foreach (var item in query)
+            {
+                Console.WriteLine($"{item.Ten} - Tong Luong = {item.TongGio * 15 * item.HSL}");
+            }
+
+
         }
 
         public void XoaNhanVien(int nhanvienID)
@@ -62,6 +82,7 @@ namespace QLNV.Services
                     {
                         dbContext.Remove(nv);
                         dbContext.SaveChanges();
+                        Console.WriteLine(Res.ThanhCong);
                     }
                     else
                     {

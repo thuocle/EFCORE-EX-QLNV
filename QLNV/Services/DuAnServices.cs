@@ -30,6 +30,7 @@ namespace QLNV.Services
                         da.CapNhatDuAn();
                         dbContext.Update(da);
                         dbContext.SaveChanges();
+                        Console.WriteLine(Res.ThanhCong);
                     }
                     trans.Commit();
                 }
@@ -64,6 +65,7 @@ namespace QLNV.Services
                     {
                         dbContext.Add(d);
                         dbContext.SaveChanges();
+                        Console.WriteLine(Res.ThanhCong);
                     }
                     trans.Commit();
                 }
